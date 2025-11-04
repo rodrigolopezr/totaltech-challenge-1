@@ -139,9 +139,9 @@
             id="statusFilter"
           >
             <option value="">Todos los estados</option>
-            <option value="COMPLETO">Completo</option>
-            <option value="PENDIENTE">Pendiente</option>
-            <option value="PARCIAL">Parcial</option>
+            <option value="1">Completo</option>
+            <option value="2">Pendiente</option>
+            <option value="3">Parcial</option>
           </select>
         </div>
       </div>
@@ -606,10 +606,10 @@
                 id="deliveryStatusFilter"
               >
                 <option value="">Todos los estados</option>
-                <option value="ENTREGADO">Entregado</option>
-                <option value="EN_TRANSITO">En Tránsito</option>
-                <option value="PENDIENTE_ENTREGA">Pendiente de Entrega</option>
-                <option value="RETRASADO">Retrasado</option>
+                <option value="1">Entregado</option>
+                <option value="2">En Tránsito</option>
+                <option value="3">Pendiente de Entrega</option>
+                <option value="4">Retrasado</option>
               </select>
             </div>
           </div>
@@ -635,7 +635,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from "vue";
+import { ref, nextTick, watchEffect } from "vue";
 import {
   searchOrders,
   type SearchFilters,
@@ -650,6 +650,11 @@ const filters = ref<SearchFilters>({
   year: "2024",
   dateFrom: "2024-01-01",
   dateTo: "2024-12-31",
+});
+
+watchEffect(() => {
+  console.log(`filters change is: ${JSON.stringify(filters.value)}`);
+  // This effect will re-run whenever count.value changes.
 });
 
 // Filtros Avanzados (UI del modal)
