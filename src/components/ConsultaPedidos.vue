@@ -653,7 +653,7 @@ const filters = ref<SearchFilters>({
 });
 
 watchEffect(() => {
-  console.log(`filters change is: ${JSON.stringify(filters.value)}`);
+  // console.log(`filters change is: ${JSON.stringify(filters.value)}`);
   // This effect will re-run whenever count.value changes.
 });
 
